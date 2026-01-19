@@ -55,7 +55,20 @@ const start = async () => {
     }
 
     const server = new ExpressServer(port);
-    const socketServer = new SocketServer(server.httpServer);
+    const socketServer = new SocketServer(server.httpServer);                                                                               
+    // ===== Render Keep-Alive Website =====
+const express = require("express");
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send("ImperialsBot is running");
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log("Web server started");
+});
+
 
     botManager.loadSavedBots();
     server.start();
